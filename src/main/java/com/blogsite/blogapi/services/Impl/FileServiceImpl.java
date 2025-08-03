@@ -5,7 +5,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
-import java.nio.file.Paths;
+import java.nio.file.Path;
 import java.util.UUID;
 
 import org.springframework.stereotype.Service;
@@ -29,7 +29,7 @@ public class FileServiceImpl implements FileService{
             f.mkdir();
         }
 
-        Files.copy(file.getInputStream(), Paths.get(filePath));
+        Files.copy(file.getInputStream(), Path.of(filePath));
         return randomName;
 
     }

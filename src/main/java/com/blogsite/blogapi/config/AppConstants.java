@@ -5,5 +5,9 @@ public class AppConstants {
     public static final String PAZE_SIZE="5";
     public static final String SORT_BY="pid";
     public static final String SORT_DIR="asc";
+    
+    // Roles Constants
+    public static final Integer Admin=1;
+    public static final Integer Normal=2;
 
 }

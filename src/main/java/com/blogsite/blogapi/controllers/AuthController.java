@@ -17,9 +17,11 @@ import com.blogsite.blogapi.config.JwtTokenHelper;
 import com.blogsite.blogapi.exceptions.LoginException;
 import com.blogsite.blogapi.payloads.JwtAuthRequest;
 import com.blogsite.blogapi.payloads.JwtAuthResponse;
+import com.blogsite.blogapi.payloads.UserDto;
+import com.blogsite.blogapi.services.UserService;
 
 @RestController
-@RequestMapping("api/v1/auth")
+@RequestMapping("api/auth")
 public class AuthController {
 
     @Autowired
@@ -30,6 +32,9 @@ public class AuthController {
 
     @Autowired
     private AuthenticationManager authenticationManager;
+
+    @Autowired
+    private UserService userService;
 
     @PostMapping("/login")
     public ResponseEntity<JwtAuthResponse> createToken(
@@ -49,5 +54,12 @@ public class AuthController {
         }catch (BadCredentialsException e){
             throw new LoginException("Username or Password wrong..");
         }
+    }
+
+    @PostMapping("/register")
+    public ResponseEntity<UserDto> registerUser(@RequestBody UserDto userDto){
+        UserDto registerUser = userService.registerUser(userDto);
+        registerUser.setPassword(null);
+        return new ResponseEntity<>(registerUser, HttpStatus.CREATED);
     }
 }

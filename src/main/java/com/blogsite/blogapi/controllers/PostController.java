@@ -100,10 +100,10 @@ public class PostController {
   
     @GetMapping("/posts/page")
     public ResponseEntity<PostResponse> allPostsPagewise(
-        @RequestParam(value = "pageNumber", defaultValue = AppConstants.PAGE_NUMBER, required = false) int pageNumber,
-        @RequestParam(value = "pageSize", defaultValue = AppConstants.PAZE_SIZE, required = false) int pageSize,
-        @RequestParam(value = "sortBy", defaultValue = AppConstants.SORT_BY, required = false) String sortBy,
-        @RequestParam(value = "sortDir", defaultValue = AppConstants.SORT_DIR, required = false) String sortDir
+        @RequestParam(defaultValue = AppConstants.PAGE_NUMBER, required = false) int pageNumber,
+        @RequestParam(defaultValue = AppConstants.PAZE_SIZE, required = false) int pageSize,
+        @RequestParam(defaultValue = AppConstants.SORT_BY, required = false) String sortBy,
+        @RequestParam(defaultValue = AppConstants.SORT_DIR, required = false) String sortDir
 
     ) {
 
