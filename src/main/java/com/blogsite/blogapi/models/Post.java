@@ -49,3 +49,15 @@ public class Post {
     @OneToMany(mappedBy = "post", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Set<Comment> comments = new HashSet<>();
 }
+
+
+/*
+ * @ManyToOne() → Many posts can belong to one category.
+Example:
+Category "Technology" can have 10 posts → Many Post instances point to one Category.
+@JoinColumn(name = "category_id") → This tells JPA:
+In the posts table, there will be a column category_id.
+This column stores the primary key of the Category entity.
+Without @JoinColumn, JPA would default the column name using the field name 
+and id: category_cat_id (because of camelCase to snake_case conversion). 
+ */
